@@ -1,2 +1,15 @@
-<h1>Players#new</h1>
-<p>Find me in app/views/players/new.html.erb</p>
+= form_with model: @form, url: players_path, method: :post, local: true do |form|
+  %table
+    %thread
+      %tr
+        %th 名前
+        %th ポイント
+  %tbody
+    = form.fields_for :products do |f|
+      %tr
+        %td
+          = f.text_field :name
+        %td
+          = f.text_field :point
+  = form.submit "一括登録"
+  = link_to "戻る", :back
