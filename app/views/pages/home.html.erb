@@ -2,12 +2,15 @@
 <p>Play UNO in formal Way!</p>
 <p>回数</p>
 <div class="create-players">
-  <%= form_with(model: @player) do |f| %>
-    <%= f.label :名前 %>
+  <%= form_with(url: "/", model: @player) do |f| %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
 
+    <%= f.label :point %>
+    <%= f.number_field :point %>
+
     <%= f.submit "追加する", class: "btn btn-primary" %>
-    <% end %>
+  <% end %>
 </div>
 
 <%= link_to "Start Game", playing_path %>

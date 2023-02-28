@@ -1,23 +1,31 @@
 class PlayersController < ApplicationController
+  def index
+    @players = Player.all
+  end
+  
   def show
     @player = Player.find(params[:id])
-  def new
-    @player = Player.new
   end
+
+  def new
+    @player = Player.new(params[:player])
+  end
+
   def create
-    @player = Player.new(player_params)
+    @player = Player.new(params[:player])
     if @player.save
-      redirect_to @player
+      redirect_to request.referrer
     else
       render 'new', status: :unprocessable_entity
     end
   end
-  def reset
-    @player = Player.update_all(:point => 0)
-  end
+
+  # def reset
+  #   @player = Player.update_all(:point => 0)
+  # end
 
   private
-    def user_params
-      params.require(:user).permit(:name)
+    def player_params
+      params.require(:player).permit(:name, :point)
     end
 end
