@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   get '/playing', to: 'pages#playing'
   get '/result', to: 'pages#result'
-  # resources: players
+  resources :players
 end
