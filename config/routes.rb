@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "pages#hello"
-  get 'pages/home'
-  get 'pages/playing'
-  get 'pages/result'
+  root 'pages#hello'
+  get '/home', to: 'pages#home'
+  get '/playing', to: 'pages#playing'
+  get '/result', to: 'pages#result'
 end
