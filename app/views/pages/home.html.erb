@@ -1,8 +1,14 @@
 <h1>UNO Points Helper</h1>
 <p>Play UNO in formal Way!</p>
-<ul>
-  <li>回数</li>
-  <li>人数</li>
-</ul>
+<p>回数</p>
+<div class="create-players">
+  <%= form_with(model: @player) do |f| %>
+    <%= f.label :名前 %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "追加する", class: "btn btn-primary" %>
+    <% end %>
+</div>
+
 <%= link_to "Start Game", playing_path %>
 
