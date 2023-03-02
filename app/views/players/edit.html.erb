@@ -12,10 +12,9 @@
       <%= player.name %>
       <a>:   </a>
       <%= player.points %>
-      <%= form_for(@player, url: player_path(@player)) do |f| %>
+      <%= form_with(model: @player) do |f| %>
         <%= f.label :points %>
-        <%= f.text_field :points %>
-        <%= f.hidden_field :id, :value=>player.id %>
+        <%= f.text_field :points, value: nil %>
         <%= f.submit "変更", class: "btn btn-primary" %>
       <% end %>
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/new', to: 'players#new'
   get '/index', to: 'players#index'
   get '/playing', to: 'players#index'
-  # patch '/playing', to: 'players#edit'
+
 
   resources :players, only: [:create, :new, :edit, :update, :destroy]
   resources :players do

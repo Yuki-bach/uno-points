@@ -16,7 +16,6 @@ class PlayersController < ApplicationController
   def create
     player = Player.new(player_name_params)
     if player.save
-      flash[:success] = "Welcome to the Sample App!"
       redirect_to new_path
     else
       render :index
@@ -33,7 +32,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     added_number = player_points_params[:points].to_i + @player.points
     if @player.update(points: added_number)
-      redirect_to request.referer
+      redirect_to index_path
     else
       render :new
     end
