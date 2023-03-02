@@ -31,7 +31,8 @@ class PlayersController < ApplicationController
 
   def update
     @player = Player.find(params[:id])
-    if @player.update(player_points_params)
+    added_number = player_points_params[:points].to_i + @player.points
+    if @player.update(points: added_number)
       redirect_to request.referer
     else
       render :new
