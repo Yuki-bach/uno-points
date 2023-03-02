@@ -2,7 +2,6 @@ class PlayersController < ApplicationController
   
   def index
     @players = Player.all
-    @player = Player.new
   end
 
   def show
@@ -11,13 +10,14 @@ class PlayersController < ApplicationController
 
   def new
     @player = Player.new
+    @players = Player.all
   end
 
   def create
-    player = Player.new(player_params)
+    player = Player.new(player_name_params)
     if player.save
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to index_path
+      redirect_to new_path
     else
       render :index
       @players = Player.all
@@ -29,17 +29,19 @@ class PlayersController < ApplicationController
   end
 
   def update
-    if @player.update(player_params[:points])
+    @player = Player.find(params[:id])
+    if @player.increment(:points, player_points_params)
       flash[:success] = "Profile updated"
+      @player.save
+      redirect_to @player
     else
       render 'edit', status: :unprocessable_entity
-      redirect_to edit_path
     end
   end
 
   def destroy_all
     Player.destroy_all
-    redirect_to players_path, status: :see_other
+    redirect_to new_path, status: :see_other
   end
 
   def playing
@@ -47,7 +49,11 @@ class PlayersController < ApplicationController
   end
 
   private
-    def player_params
+    def player_name_params
       params.require(:player).permit(:name)
     end
+    def player_points_params
+      params.require(:player).permit(:points)
+    end
+
 end

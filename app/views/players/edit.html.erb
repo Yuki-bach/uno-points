@@ -12,12 +12,12 @@
       <%= player.name %>
       <a>:   </a>
       <%= player.points %>
-      <%= player_id = player.id%>
-      <%= form_with(model: @player, method: :patch, local: true) do |f| %>
+      <%= form_with(model: @player, method: :patch) do |f| %>
         <%= f.label :points %>
         <%= f.text_field :points %>
-        <%= f.submit "Save changes", class: "btn btn-primary" %>
+        <%= f.submit "変更", class: "btn btn-primary" %>
       <% end %>
+
             <p></p>
     <% end %>
   </ol>

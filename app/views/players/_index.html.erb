@@ -1,0 +1,9 @@
+<div class="player-list">
+  <p>プレイヤー設定</p>
+  <ol>
+    <%= @players.each do |player| %>
+      <li><%= player.name %><%= player.points %></li>
+      <p></p>
+    <% end %>
+  </ol>
+</div>

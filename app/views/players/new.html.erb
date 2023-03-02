@@ -1,12 +1,16 @@
+<h1>UNO Points Helper</h1>
+<p>Play UNO in formal Way!</p>
+
+<%= render 'index' %>
+
+
 <div class="create-players">
   <%= form_with(model: @player, method: :post) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-
-    <%= f.label :points %>
-    <%= f.number_field :points %>
-
     <%= f.submit "追加する", class: "btn btn-primary" %>
   <% end %>
 </div>
 
+<%= button_to "全て削除", destroy_all_players_path, method: :delete %>
+<%= button_to "Start Game", playing_path %>
