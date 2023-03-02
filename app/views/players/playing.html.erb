@@ -7,10 +7,21 @@
 <p>1/5</p>
 
 <div class="player-list">
-  <p>プレイヤー設定</p>
   <ol>
     <%= @players.each do |player| %>
-      <li><%= player.name %></li>
+
+      <%= player.name %>
+      <a>:   </a>
+      <%= player.points %>
+      <%= @player=player %>
+
+      <%= form_with(model: @player) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :points %>
+        <%= f.text_field :points %>
+        <%= f.submit "変更する", class: "btn btn-primary" %>
+      <% end %>
       <p></p>
     <% end %>
   </ol>

@@ -3,11 +3,12 @@
 
 <div class="player-list">
   <p>プレイヤー設定</p>
-  <%= @players.each do |player| %>
-    <span><%= player.name %></span>
-    <span><%= player.points %></span>
-    <p></p>
-  <% end %>
+  <ol>
+    <%= @players.each do |player| %>
+      <li><%= player.name %></li>
+      <p></p>
+    <% end %>
+  </ol>
 </div>
 
 <%= render 'form' %>
