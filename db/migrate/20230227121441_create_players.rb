@@ -3,7 +3,6 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
     create_table :players do |t|
       t.string :name
       t.integer :points, default: 0
-      # t.boolean :win, default: false
     end
   end
 end

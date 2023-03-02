@@ -52,13 +52,13 @@ class PlayersController < ApplicationController
   end
 
   def update_multiple
-    @players = Player.update(params[:players].keys, params[:players].values)
-    @players.reject! { |p| p.errors.empty? }
-    if @players.empty?
-      redirect_to edit_multiple_path
-    else
-      render "edit_multiple"
+    @players = Player.all
+    @players.each_with_index do |player, i|
+      added = player.points + params[:players].values[i]['points'].to_i
+      @player = Player.find(player.id)
+      @player.update(points: added)
     end
+    redirect_to edit_multiple_path
   end
 
   private

@@ -12,7 +12,7 @@
       <%= player.name.ljust(14, '_')%>
       <%= player.points.to_s.ljust(16, '_')%>
       <%= f.text_field :points , size: 5, value: nil%>
-      <input type="radio">
+      <input type="radio" name="win">WIN
       <p></p>
     <% end %>
   <% end %>
