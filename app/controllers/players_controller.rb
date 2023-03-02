@@ -17,10 +17,16 @@ class PlayersController < ApplicationController
     player = Player.new(player_params)
     if player.save
       flash[:success] = "Welcome to the Sample App!"
+      redirect_to index_path
     else
       render :index
       @players = Player.all
     end
+  end
+
+  def destroy_all
+    Player.destroy_all
+    redirect_to players_path, status: :see_other
   end
 
   private

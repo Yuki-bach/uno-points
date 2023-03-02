@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   get '/result', to: 'pages#result'
   get '/new', to: 'players#new'
   get '/index', to: 'players#index'
-  resources :players 
+  resources :players, only: [:index, :show, :new, :create]
+  resources :players do
+    collection do
+      delete :destroy_all
+    end
+  end
 end

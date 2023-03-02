@@ -11,4 +11,5 @@
 </div>
 
 <%= render 'form' %>
-<%= link_to "Start Game", playing_path %>
+<%= button_to "全て削除", destroy_all_players_path, method: :delete %>
+<%= button_to "Start Game", playing_path %>
