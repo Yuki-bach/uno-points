@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/new', to: 'players#new'
   get '/index', to: 'players#index'
-  post '/index', to: 'players#index'
+  post '/edit_multiple', to: 'players#edit_multiple'
   get '/edit_multiple', to: 'players#edit_multiple'
 
 
