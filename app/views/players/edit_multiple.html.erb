@@ -1,0 +1,21 @@
+<h1>Edit Players</h1>
+
+
+<tr>
+  <th>プレイヤー名</th>
+  <th>現在のポイント</th>
+  <th>ポイント増減</th>
+</tr>
+<%= form_tag update_multiple_players_path do %>
+  <% for player in @players %>
+    <%= fields_for "players[]", player do |f| %>
+      <%= f.hidden_field :id %>
+      <%= player.name.ljust(12, '_')%>
+      <%= player.points.to_s.ljust(15, '_')%>
+      <%= f.text_field :points , size: 5, value: nil%> 
+      <p></p>
+    <% end %>
+  <% end %>
+
+  <%= submit_tag "確定" %>
+<% end %>

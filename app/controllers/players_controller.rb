@@ -47,6 +47,20 @@ class PlayersController < ApplicationController
     @players = Player.all
   end
 
+  def edit_multiple
+    @players = Player.all
+  end
+
+  def update_multiple
+    @players = Player.update(params[:players].keys, params[:players].values)
+    @players.reject! { |p| p.errors.empty? }
+    if @players.empty?
+      redirect_to edit_multiple_path
+    else
+      render "edit_multiple"
+    end
+  end
+
   private
     def player_name_params
       params.require(:player).permit(:name)
