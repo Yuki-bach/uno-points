@@ -2,8 +2,9 @@ class PlayersController < ApplicationController
   
   def index
     @players = Player.all
+    @player = Player.new
   end
-  
+
   def show
     @player = Player.find(params[:id])
   end
@@ -13,12 +14,12 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.new(player_params)
-    if @player.save
+    player = Player.new(player_params)
+    if player.save
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @player
     else
-      render 'new', status: :unprocessable_entity
+      render :index
+      @players = Player.all
     end
   end
 

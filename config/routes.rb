@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/result', to: 'pages#result'
   get '/new', to: 'players#new'
   get '/index', to: 'players#index'
-  resources :players
+  resources :players 
 end

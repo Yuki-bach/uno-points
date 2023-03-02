@@ -10,16 +10,5 @@
   <% end %>
 </div>
 
-<div class="create-players">
-  <%= form_with(model: @player, method: :get) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :points %>
-    <%= f.number_field :points %>
-
-    <%= f.submit "追加する", class: "btn btn-primary" %>
-  <% end %>
-</div>
-
+<%= render 'form' %>
 <%= link_to "Start Game", playing_path %>
