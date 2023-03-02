@@ -25,17 +25,16 @@ class PlayersController < ApplicationController
   end
 
   def edit
+    @player = Player.find(params[:id])
     @players = Player.all
   end
 
   def update
     @player = Player.find(params[:id])
-    if @player.increment(:points, player_points_params)
-      flash[:success] = "Profile updated"
-      @player.save
-      redirect_to @player
+    if @player.update(player_points_params)
+      redirect_to request.referer
     else
-      render 'edit', status: :unprocessable_entity
+      render :new
     end
   end
 
