@@ -1,9 +1,11 @@
 <div class="player-list">
   <p>プレイヤー設定</p>
-  <ol>
+  <% if @players.empty? %>
+    <p>プレイヤーを登録しよう！</p>
+  <% else %>
     <%= @players.each do |player| %>
-      <li><%= player.name %><%= player.points %></li>
+      <%= player.name %>
       <p></p>
     <% end %>
-  </ol>
+  <% end %>
 </div>
