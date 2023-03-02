@@ -1,2 +1,12 @@
-<h1>Players#new</h1>
-<p>Find me in app/views/players/new.html.erb</p>
+<div class="create-players">
+  <%= form_with(model: @player, method: :post) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :points %>
+    <%= f.number_field :points %>
+
+    <%= f.submit "追加する", class: "btn btn-primary" %>
+  <% end %>
+</div>
+

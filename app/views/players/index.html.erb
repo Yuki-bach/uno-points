@@ -1,6 +1,15 @@
 <h1>UNO Points Helper</h1>
 <p>Play UNO in formal Way!</p>
 
+<div class="player-list">
+  <p>プレイヤー設定</p>
+  <%= @players.each do |player| %>
+    <span><%= player.name %></span>
+    <span><%= player.points %></span>
+    <p></p>
+  <% end %>
+</div>
+
 <div class="create-players">
   <%= form_with(model: @player, method: :get) do |f| %>
     <%= f.label :name %>
@@ -14,4 +23,3 @@
 </div>
 
 <%= link_to "Start Game", playing_path %>
-
