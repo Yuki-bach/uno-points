@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
 
   def destroy_all
     Player.destroy_all
-    redirect_to new_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   def playing
