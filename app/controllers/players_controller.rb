@@ -54,9 +54,9 @@ class PlayersController < ApplicationController
   def update_multiple
     @players = Player.all
     @players.each_with_index do |player, i|
-      added = player.points + params[:players].values[i]['points'].to_i
+      added_points = player.points + params[:players].values[i]['points'].to_i
       @player = Player.find(player.id)
-      @player.update(points: added)
+      @player.update(points: added_points)
     end
     redirect_to edit_multiple_path
   end
