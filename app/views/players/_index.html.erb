@@ -1,6 +1,6 @@
 <div class="player-list">
   <h3>プレイヤー設定</h3>
-  <% if @players.empty? %>
+  <% if @players.nil? || @players.empty? %>
     <p>プレイヤーを登録しよう！</p>
   <% else %>
     <%= @players.each do |player| %>
