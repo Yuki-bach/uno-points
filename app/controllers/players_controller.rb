@@ -14,37 +14,18 @@ class PlayersController < ApplicationController
   end
 
   def create
-    player = Player.new(player_name_params)
+    player = Player.new(player_params)
     if player.save
-      redirect_to new_path
+      redirect_to root_path
     else
       render :index
       @players = Player.all
     end
   end
 
-  def edit
-    @player = Player.find(params[:id])
-    @players = Player.all
-  end
-
-  def update
-    @player = Player.find(params[:id])
-    added_number = player_points_params[:points].to_i + @player.points
-    if @player.update(points: added_number)
-      redirect_to index_path
-    else
-      render :new
-    end
-  end
-
   def destroy_all
     Player.destroy_all
     redirect_to root_path 
-  end
-
-  def playing
-    @players = Player.all
   end
 
   def edit_multiple
@@ -58,15 +39,12 @@ class PlayersController < ApplicationController
       @player = Player.find(player.id)
       @player.update(points: added_points)
     end
-    redirect_to edit_multiple_path
+    redirect_to playing_path
   end
 
   private
-    def player_name_params
+    def player_params
       params.require(:player).permit(:name)
-    end
-    def player_points_params
-      params.require(:player).permit(:points)
     end
 
 end
