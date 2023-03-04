@@ -15,12 +15,12 @@ class PlayerTest < ActiveSupport::TestCase
   end
 
   test "name should not be too long" do
-    @player.name = "a" * 20
+    @player.name = "a" * 21
     assert_not @player.valid?
   end
 
   test "name should be unique" do
-    duplicate_user = @player.dup
+    duplicate_player = @player.dup
     @player.save
     assert_not duplicate_player.valid?
   end

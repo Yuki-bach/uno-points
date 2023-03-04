@@ -2,7 +2,7 @@ require "test_helper"
 
 class PlayersControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get players_new_url
+    get root_path
     assert_response :success
   end
 end
