@@ -11,12 +11,11 @@
     
   </head>
 
-  <header>
-    <h1>Myapp</h1>
-  </header>
-
   <body>
+    <header>
+      <h1>UNOポイント管理アプリ</h1>
+    </header>
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+    <%# <%= debug(params) if Rails.env.development? %> 
   </body>
 </html>

@@ -1,22 +1,22 @@
-<h1>プレイ画面</h1>
-
-<tr>
-  <th>プレイヤー名｜</th>
-  <th>現在のポイント｜</th>
-  <th>ポイント増減</th>
-</tr>
-<%= form_tag update_multiple_players_path do %>
-  <% for player in @players %>
-    <%= fields_for "players[]", player do |f| %>
-      <%= f.hidden_field :id %>
-      <%= player.name.ljust(14, '_')%>
-      <%= player.points.to_s.ljust(16, '_')%>
-      <%= f.text_field :points , size: 5, value: nil%>
-      <input type="radio" name="win">WIN
-      <p></p>
+<div class="playing-wrapper">
+  <tr>
+    <th>プレイヤー名｜</th>
+    <th>現在のポイント｜</th>
+    <th>ポイント増減</th>
+  </tr>
+  <%= form_tag update_multiple_players_path do %>
+    <% for player in @players %>
+      <%= fields_for "players[]", player do |f| %>
+        <%= f.hidden_field :id %>
+        <%= player.name.ljust(14, '_')%>
+        <%= player.points.to_s.ljust(16, '_')%>
+        <%= f.text_field :points , size: 5, value: nil%>
+        <input type="radio" name="win">WIN
+        <p></p>
+      <% end %>
     <% end %>
+    
+    <%= submit_tag "確定" %>
+    <%= button_to "ゲーム終了！", destroy_all_players_path, method: :delete%>
   <% end %>
-  
-  <%= submit_tag "確定" %>
-  <%= link_to "全て削除", destroy_all_players_path, method: :delete%>
-<% end %>
+</div>
