@@ -10,7 +10,7 @@ class PlayerTest < ActiveSupport::TestCase
   end
 
   test "name should be present" do
-    @player.name = ""
+    @player.name = "  "
     assert_not @player.valid?
   end
 
