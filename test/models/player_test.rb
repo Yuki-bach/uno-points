@@ -23,6 +23,6 @@ class PlayerTest < ActiveSupport::TestCase
     duplicate_player = @player.dup
     @player.save
     assert_not duplicate_player.valid?
-  end
+end
   
 end
