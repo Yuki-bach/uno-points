@@ -10,7 +10,7 @@ class PlayerTest < ActiveSupport::TestCase
   end
 
   test "name should be present" do
-    @player.name = ""
+    @player.name = "  "
     assert_not @player.valid?
   end
 
@@ -23,6 +23,6 @@ class PlayerTest < ActiveSupport::TestCase
     duplicate_player = @player.dup
     @player.save
     assert_not duplicate_player.valid?
-  end
+end
   
 end
